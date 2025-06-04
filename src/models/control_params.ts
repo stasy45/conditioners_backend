@@ -15,13 +15,13 @@ export class ControlParams {
   conditioner: Conditioners;
 
   @Column()
-  mode: number;
+  work_mode: number;
 
   @Column()
-  set_temp_interior: number;
+  target_temp: number;
 
   @Column()
-  speed_level_interior: number;
+  speed_fan: number;
 
   @Column()
   temp_in_air: number;

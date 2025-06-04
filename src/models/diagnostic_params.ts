@@ -18,7 +18,7 @@ export class DiagnosticParams {
   voltage: number;
 
   @Column()
-  rotations: number;
+  measured_speed_compressor: number;
 
   @Column()
   pwm_condenser: number;
@@ -27,19 +27,19 @@ export class DiagnosticParams {
   pwm_compressor: number;
 
   @Column()
-  pwm_current_fan: number;
+  actual_fan_pwm_evap: number;
 
   @Column()
-  amperage_condenser: number;
+  current_condensor: number;
 
   @Column()
-  amperage_compressor: number;
+  current_compressor: number;
 
   @Column()
-  temp_board: number;
+  temp_plate: number;
 
   @Column()
-  temp_vapor: number;
+  temp_evap: number;
 
   @CreateDateColumn({ type: 'timestamp' })
   received_date: Date;

@@ -5,7 +5,7 @@ export class DiagnosticParamsRequestDto {
   voltage: number;
 
   @IsNumber()
-  rotations: number;
+  measured_speed_compressor: number;
 
   @IsNumber()
   pwm_condenser: number;
@@ -14,30 +14,30 @@ export class DiagnosticParamsRequestDto {
   pwm_compressor: number;
 
   @IsNumber()
-  pwm_current_fan: number;
+  actual_fan_pwm_evap: number;
 
   @IsNumber()
-  amperage_condenser: number;
+  current_compressor: number;
 
   @IsNumber()
-  amperage_compressor: number;
+  current_condensor: number;
 
   @IsNumber()
-  temp_board: number;
+  temp_plate: number;
 
   @IsNumber()
-  temp_vapor: number;
+  temp_evap: number;
 }
 
 export class ControlParamsRequestDto {
   @IsNumber()
-  mode: number;
+  work_mode: number;
 
   @IsNumber()
-  set_temp_interior: number;
+  target_temp: number;
 
   @IsNumber()
-  speed_level_interior: number;
+  speed_fan: number;
 
   @IsNumber()
   temp_in_air: number;
