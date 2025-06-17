@@ -8,6 +8,8 @@ import { AppService } from './app.service';
 import { Conditioners } from "./models/conditioners";
 import { DiagnosticParams } from "./models/diagnostic_params";
 import { ControlParams } from "./models/control_params";
+import { Errors } from './models/errors';
+import { ErrorsHistory } from './models/errors_history';
 
 import { ConditionersModule } from './services/conditioners/conditioners.module';
 
@@ -24,7 +26,9 @@ import { ConditionersModule } from './services/conditioners/conditioners.module'
       entities: [
         Conditioners,
         DiagnosticParams,
-        ControlParams
+        ControlParams,
+        Errors,
+        ErrorsHistory
       ],
       synchronize: true,
     }),

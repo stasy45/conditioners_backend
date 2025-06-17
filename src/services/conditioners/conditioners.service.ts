@@ -7,6 +7,8 @@ import { ControlParamsRequestDto, DiagnosticParamsRequestDto } from '../../dtos/
 import { Conditioners } from "../../models/conditioners";
 import { DiagnosticParams } from '../../models/diagnostic_params';
 import { ControlParams } from '../../models/control_params';
+import { ErrorsHistory } from 'src/models/errors_history';
+import { Errors } from 'src/models/errors';
 
 @Injectable()
 export class ConditionersService {
@@ -19,6 +21,12 @@ export class ConditionersService {
 
     @InjectRepository(ControlParams)
     private controlParamRepository: Repository<ControlParams>,
+
+    @InjectRepository(Errors)
+    private errorRepository: Repository<Errors>,
+
+    @InjectRepository(ErrorsHistory)
+    private errorHistoryRepository: Repository<ErrorsHistory>,
   ) {}
 
   async findOneBySN(serial_number: string): Promise<Conditioners | null> {
@@ -28,6 +36,12 @@ export class ConditionersService {
   async findOneById(id: number): Promise<Conditioners | null> {
     return await this.conditionerRepository.findOneBy({ id });
   }
+
+  async findErrorByCode(code: number): Promise<Errors | null> {
+    return await this.errorRepository.findOneBy({ code });
+  }
+
+  
 
   async getConditioner(serial_number: string): Promise<number | undefined> {
     const conditioner = await this.findOneBySN(serial_number);
@@ -47,5 +61,12 @@ export class ConditionersService {
     const conditioner = await this.findOneById(conditionerId);
     this.controlParamRepository.save({ ...newControlParams, conditioner });
     return JSON.stringify('Control success');
+  }
+
+  async postError(conditionerId: number, errorCode: number): Promise<string> {
+    const conditioner = await this.findOneById(conditionerId);
+    const error = await this.findErrorByCode(errorCode);
+    this.errorHistoryRepository.save({ error, conditioner });
+    return JSON.stringify('Error success');
   }
 }
