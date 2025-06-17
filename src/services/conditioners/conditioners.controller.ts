@@ -18,12 +18,14 @@ export class ConditionersController {
   @Post(':conditionerId/diagnostic_params')
   @UsePipes(ValidationPipe, ConditionerNotExistValidation)
   async postDiagnosticParams(@Param() params: { conditionerId: number }, @Body() newDiagnosticParams: DiagnosticParamsRequestDto): Promise<string> {
+    console.log(newDiagnosticParams)
     return this.conditionerService.postDiagnosticParams(params.conditionerId, newDiagnosticParams);
   }
 
   @Post(':conditionerId/control')
   @UsePipes(ValidationPipe, ConditionerNotExistValidation)
   async postControlParams(@Param() params: { conditionerId: number }, @Body() newControlParams: ControlParamsRequestDto): Promise<string> {
+    console.log(newControlParams)
     return this.conditionerService.postControlParams(params.conditionerId, newControlParams);
   }
 }

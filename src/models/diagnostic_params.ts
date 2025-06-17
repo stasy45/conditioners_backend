@@ -21,7 +21,7 @@ export class DiagnosticParams {
   measured_speed_compressor: number;
 
   @Column()
-  pwm_condenser: number;
+  pwm_condensor: number;
 
   @Column()
   pwm_compressor: number;

@@ -8,7 +8,7 @@ export class DiagnosticParamsRequestDto {
   measured_speed_compressor: number;
 
   @IsNumber()
-  pwm_condenser: number;
+  pwm_condensor: number;
 
   @IsNumber()
   pwm_compressor: number;
